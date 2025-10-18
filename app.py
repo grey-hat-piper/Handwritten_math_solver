@@ -45,16 +45,13 @@ uploaded_file = st.file_uploader(
     type=["jpg", "jpeg", "png"]
 )
 
-
-# Resize large images to manageable size
-MAX_SIZE = (800, 800)
-image = ImageOps.exif_transpose(uploaded_file)  # correct iPhone rotation
-image.thumbnail(MAX_SIZE)
-
-
 # --- IMAGE PREVIEW ---
 if uploaded_file is not None:
-    image = Image.open(image)
+    image = Image.open(uploaded_file)
+    # Resize large images to manageable size
+    MAX_SIZE = (800, 800)
+    image = ImageOps.exif_transpose(image)  # correct iPhone rotation
+    image.thumbnail(MAX_SIZE)
     st.image(image, caption="Uploaded Image")
     st.success("✅ Image uploaded successfully!")
 
