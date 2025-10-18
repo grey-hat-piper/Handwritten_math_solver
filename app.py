@@ -56,7 +56,7 @@ if uploaded_file is not None:
     imgage_np = np.array(image)
 
     # Initialize EasyOCR reader
-    reader = easyocr.Reader(['en']) #load english model 
+    reader = easyocr.Reader(['en'], gpu=True ) #load english model 
 
     # Perform OCR on the image
     with st.spinner("🔍 Recognizing text..."):
