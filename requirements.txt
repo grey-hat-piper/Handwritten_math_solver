@@ -3,4 +3,3 @@ Pillow
 easyocr
 numpy
 sympy
-re
