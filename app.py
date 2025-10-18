@@ -48,7 +48,7 @@ uploaded_file = st.file_uploader(
 # --- IMAGE PREVIEW ---
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded Image", use_container_width=True)
+    st.image(image, caption="Uploaded Image")
     st.success("✅ Image uploaded successfully!")
 
     #--- OCR RECOGNITION ---
@@ -56,7 +56,7 @@ if uploaded_file is not None:
     imgage_np = np.array(image)
 
     # Initialize EasyOCR reader
-    reader = easyocr.Reader(['en'], gpu=True) #load english model 
+    reader = easyocr.Reader(['en']) #load english model 
 
     # Perform OCR on the image
     with st.spinner("🔍 Recognizing text..."):
