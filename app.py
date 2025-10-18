@@ -88,9 +88,8 @@ if uploaded_file is not None:
         else:
                 try:
                     # Attempt to parse and solve the recognized text
-                    expression = sp.sympify(cleaned_expr).evalf
-                    solution = sp.solve(sp.Eq(expression, 0))
-                    st.success(f"✅ Solution: {solution}")
+                    expression = sp.sympify(cleaned_expr)
+                    st.success(f"✅ Solution: {expression}")
                     st.balloons()
 
                 except (sp.SympifyError, ValueError) as e:
