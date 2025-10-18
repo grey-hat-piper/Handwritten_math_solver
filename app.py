@@ -1,5 +1,5 @@
 import streamlit as st
-from PIL import Image
+from PIL import Image, ImageOps
 import easyocr
 import numpy as np
 import sympy as sp
@@ -45,9 +45,16 @@ uploaded_file = st.file_uploader(
     type=["jpg", "jpeg", "png"]
 )
 
+
+# Resize large images to manageable size
+MAX_SIZE = (800, 800)
+image = ImageOps.exif_transpose(uploaded_file)  # correct iPhone rotation
+image.thumbnail(MAX_SIZE)
+
+
 # --- IMAGE PREVIEW ---
 if uploaded_file is not None:
-    image = Image.open(uploaded_file)
+    image = Image.open(image)
     st.image(image, caption="Uploaded Image")
     st.success("✅ Image uploaded successfully!")
 
